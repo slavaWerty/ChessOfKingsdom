@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/ChessOfKingsdom/Scenes/Bootstrap.unity
+    guid: 9685cadb43059484fb36118b24d63cff
+  - enabled: 1
+    path: Assets/ChessOfKingsdom/Scenes/Menu.unity
+    guid: 73d07d59a6d9cfd419345c32e1423f63
+  - enabled: 1
+    path: Assets/ChessOfKingsdom/Scenes/Castle.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/ChessOfKingsdom/Scenes/Fight.unity
+    guid: 4d5881c1ad3c9f24cbf1f60d72f6bafd
   m_configObjects: {}
