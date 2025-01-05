@@ -28,6 +28,8 @@ namespace GamePlay.Services
                 _buildingsSettingsMap[buildingSettings.TypeId] = buildingSettings;
             }
 
+            Debug.Log(buildings.Count);
+
             foreach(var buildingEntity in buildings)
             {
                 CreateBuildingsViewModel(buildingEntity);
@@ -66,6 +68,8 @@ namespace GamePlay.Services
         {
             var buildingSettings = _buildingsSettingsMap[buildingEntity.TypeId];
             var buildingViewModel = new BuildingsViewModel(buildingEntity, buildingSettings ,this);
+
+            Debug.Log("Das Das Good");
 
             _allBuildings.Add(buildingViewModel);
             _buildingsMap[buildingEntity.Id] = buildingViewModel;

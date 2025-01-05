@@ -8,7 +8,7 @@ namespace GamePlay.View
         public static void Register(DIContainer container)
         {
             container.RegisterFactory(c => new UICastleRootViewModel()).AsSingle();
-            container.RegisterFactory(c => new WorldCastleRootViewModel(c.Resolve<BuildingsService>())).AsSingle();
+            container.RegisterFactory(c => new WorldCastleRootViewModel(c.Resolve<BuildingsService>(), c.Resolve<ResourcesService>())).AsSingle();
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Buildings;
 using ObservableCollections;
 using R3;
+using UnityEngine;
 using System.Linq;
+using States.GameResources;
 
 namespace StateRoot
 {
@@ -9,11 +11,23 @@ namespace StateRoot
     {
         private readonly GameState _gameState;
         public ObservableList<BuildingEntityProxy> Buildings { get; } = new();
+        public ObservableList<Resource> Resources { get; } = new();
 
         public GameStateProxy(GameState gameState)
         {
             _gameState = gameState;
 
+            InitBuildings(_gameState);
+            InitResources(_gameState);
+        }
+
+        public int GreateEntityId()
+        {
+            return _gameState.CreateEntityId();
+        }
+
+        private void InitBuildings(GameState gameState)
+        {
             gameState.Buildings.ForEach(b => Buildings.Add(new BuildingEntityProxy(b)));
 
             Buildings.ObserveAdd().Subscribe(e =>
@@ -31,9 +45,23 @@ namespace StateRoot
             });
         }
 
-        public int GetEntityId()
+        private void InitResources(GameState gameState)
         {
-            return _gameState.CreateEntityId();
+            gameState.Resource.ForEach(b => Resources.Add(new Resource(b)));
+
+            Resources.ObserveAdd().Subscribe(e =>
+            {
+                var addedBuildingentity = e.Value;
+
+                gameState.Resource.Add(addedBuildingentity.Origin);
+            });
+
+            Resources.ObserveRemove().Subscribe(e =>
+            {
+                var removeBuildingentityProxy = e.Value;
+                var removesBuildingEntity = gameState.Resource.FirstOrDefault(b => b.ResourceType == removeBuildingentityProxy.ResourceType);
+                gameState.Resource.Remove(removesBuildingEntity);
+            });
         }
     }
 }

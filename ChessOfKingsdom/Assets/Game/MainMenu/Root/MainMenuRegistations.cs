@@ -1,6 +1,4 @@
 ﻿using BaCon;
-using GameRoot.Services;
-using MainMenu.Services;
 
 namespace MainMenu
 {
@@ -8,7 +6,7 @@ namespace MainMenu
     {
         public static void Register(DIContainer container, MenuEnterParams enterParams)
         {
-            container.RegisterFactory(c => new SomeMainMenuService(c.Resolve<SomeCommonService>())).AsSingle();
+
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Buildings;
+using GamePlay.Settings;
+using States.GameResources;
 using System;
 using System.Collections.Generic;
 
@@ -9,6 +11,8 @@ namespace StateRoot
     {
         public int GlobalEntityId;
         public List<BuildingsEntity> Buildings;
+        public BuildingsSettings BuildingsSettings;
+        public List<ResourceData> Resource;
 
         public int CreateEntityId()
         {

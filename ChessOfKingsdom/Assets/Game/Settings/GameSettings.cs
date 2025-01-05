@@ -7,5 +7,6 @@ namespace Game.Settings
     public class GameSettings : ScriptableObject
     {
         public BuildingsSettings BuildingsSettings;
+        public GamePlay.Settings.BuildingsSettings NewBuildingsSettingsp;
     }
 }

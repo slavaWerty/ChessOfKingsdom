@@ -1,6 +1,8 @@
 ﻿using Buildings;
 using R3;
 using StateRoot;
+using States.GameResources;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -55,8 +57,11 @@ namespace States
         {
             _gameStateOrigin = new GameState
             {
-                Buildings = new List<BuildingsEntity>
+                Buildings = new List<BuildingsEntity>(),
+                Resource = new List<ResourceData>()
                 {
+                    new() {Amount = 0, ResourceType = ResourceType.SoftCurrency},
+                    new() {Amount = 0, ResourceType = ResourceType.HardCurrency},
                 }
             };
 
