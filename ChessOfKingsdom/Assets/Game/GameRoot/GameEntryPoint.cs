@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using Utils;
 using R3;
 using BaCon;
-using GameRoot.Services;
 using States;
 using Game.Settings;
 
@@ -46,8 +45,6 @@ namespace GameRoot
             var gameStateProvider = new PlayerPrefsGameStateProvider();
             // здесь должна быть команда загруски настроек
             _rootContainer.RegisterInstance<IGameStateProvider>(gameStateProvider);
-
-            _rootContainer.RegisterFactory(C => new SomeCommonService()).AsSingle();
         }
 
         private async void RunGame()
@@ -59,7 +56,7 @@ namespace GameRoot
 
             if (sceneName == Scenes.GASTLE)
             {
-                var enterParams = new CastleEnterParams("ddd.save", 1);
+                var enterParams = new CastleEnterParams();
                 _coroutines.StartCoroutine(LoadAndStartCastle(enterParams));
                 return;
             }
@@ -104,9 +101,16 @@ namespace GameRoot
             var sceneEntryPoint = Object.FindObjectOfType<CastleEntryPoint>();
             var gamePlayContainer = _cachedSceneContainer = new DIContainer(_rootContainer);
 
-            sceneEntryPoint.Run(gamePlayContainer, enterParams).Subscribe(gameplayEnterParams =>
+            var exitSignals = sceneEntryPoint.Run(gamePlayContainer, enterParams);
+
+            exitSignals[0].Subscribe(gameplayEnterParams =>
             {
                 _coroutines.StartCoroutine(LoadAndStartMainMenu(gameplayEnterParams.MainMenuEnterParams));
+            });
+
+            exitSignals[1].Subscribe(gameplayEnterParams =>
+            {
+                _coroutines.StartCoroutine(LoadAndStartFight(gameplayEnterParams.FightEnterParams));
             });
 
             _uiRoot.HideLoadingScreen();

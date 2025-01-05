@@ -26,7 +26,7 @@ public class FightEntryPoint : MonoBehaviour
 
         Debug.Log(enterParams.TestNumber);
 
-        var mainMenuenterParams = new CastleEnterParams("Negric", 5);
+        var mainMenuenterParams = new CastleEnterParams();
         var exitParams = new FightExitParams(mainMenuenterParams);
         var exitTiMainMenuSceneSignal = exitSceneSignalsubj.Select(_ => exitParams);
 

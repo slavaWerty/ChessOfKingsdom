@@ -29,9 +29,7 @@ namespace MainMenu
 
             Debug.Log(enterParams?.Result);
 
-            var savefileName = "ololo.save";
-            var levelNumber = Random.Range(0, 300);
-            var gameplayEnterParams = new CastleEnterParams(savefileName, levelNumber);
+            var gameplayEnterParams = new CastleEnterParams();
             var mainMenuExitParams = new MainMenuExitParams(gameplayEnterParams);
             var exitToGameplayScenesSignal = exitSceneSignalSubj.Select(_ => mainMenuExitParams);
 

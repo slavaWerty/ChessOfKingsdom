@@ -1,17 +1,31 @@
+using GamePlay.Services;
 using R3;
 using UnityEngine;
 
 public class UICastleRootBinder : MonoBehaviour
 {
-    private Subject<Unit> _exitSceneSignalSubj;
+    private Subject<Unit> _transitionToMenuSceneSignalSubj;
+    private Subject<Unit> _transitionToFightSceneSignalSubj;
+    private Subject<Unit> _placingBuilding;
 
-    public void HandleGoToGameplayButtonClick()
+    public void HandlePlacingBuildingButtonClick()
     {
-        _exitSceneSignalSubj?.OnNext(Unit.Default);
+        _placingBuilding?.OnNext(Unit.Default);
     }
 
-    public void Bind(Subject<Unit> exitSceneSignalSubj)
+    public void HandleGoToMenuSceneButtonClick()
     {
-        _exitSceneSignalSubj = exitSceneSignalSubj;
+        _transitionToMenuSceneSignalSubj?.OnNext(Unit.Default);
+    }
+
+    public void HandleGoToFightSceneButtonClick()
+    {
+        _transitionToFightSceneSignalSubj?.OnNext(Unit.Default);
+    }
+
+    public void Bind(Subject<Unit> transitionToMenuSceneSignalSubj, Subject<Unit> transitionToFightSceneSignalSubj)
+    {
+        _transitionToMenuSceneSignalSubj = transitionToMenuSceneSignalSubj;
+        _transitionToFightSceneSignalSubj = transitionToFightSceneSignalSubj;
     }
 }

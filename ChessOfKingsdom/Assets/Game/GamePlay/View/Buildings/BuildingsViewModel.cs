@@ -2,7 +2,6 @@
 using GamePlay.Services;
 using R3;
 using Settings.Castle;
-using Settings.Castle.Buildings;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +16,7 @@ namespace GamePlay.View.Buildings
 
         public readonly int BuildingsEntityId;
         public ReadOnlyReactiveProperty<Vector2Int> Position { get; }
+        public ReadOnlyReactiveProperty<int> Level { get; }
         public readonly string TypeId;
 
         public BuildingsViewModel(BuildingEntityProxy buildingProxy, BuildingSettings settings,BuildingsService buildings)
@@ -24,6 +24,7 @@ namespace GamePlay.View.Buildings
             BuildingsEntityId = buildingProxy.Id;
             _settings = settings;
             TypeId = buildingProxy.TypeId;
+            Level = buildingProxy.Level;
 
             this.buildingProxy = buildingProxy;
             this.buildings = buildings;
