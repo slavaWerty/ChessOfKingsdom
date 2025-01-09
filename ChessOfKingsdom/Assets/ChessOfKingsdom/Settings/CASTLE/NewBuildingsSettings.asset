@@ -14,13 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 0
   InitzialSettings:
-    Buildings:
-    - TypeId: dummy
-      Level: 1
-      Position: {x: 1, y: 1}
-    - TypeId: dummy
-      Level: 2
-      Position: {x: 1, y: 2}
-    - TypeId: dummy
-      Level: 3
-      Position: {x: 2, y: 1}
+    Buildings: []

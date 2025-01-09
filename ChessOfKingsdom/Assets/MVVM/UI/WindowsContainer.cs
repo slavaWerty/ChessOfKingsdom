@@ -41,7 +41,7 @@ namespace mBuilding.Scripts.MVVM.UI
             
             var prefabPath = GetPrefabPath(viewModel);
             var prefab = Resources.Load<GameObject>(prefabPath);
-            var createdScreen = Instantiate(prefab, _screensContainer);
+            var createdScreen = Instantiate(prefab, _screensContainer.transform);
             var binder = createdScreen.GetComponent<IWindowBinder>();
             
             binder.Bind(viewModel);

@@ -1,9 +1,9 @@
 ﻿using Buildings;
 using ObservableCollections;
 using R3;
-using UnityEngine;
 using System.Linq;
 using States.GameResources;
+using GamePlay.Settings;
 
 namespace StateRoot
 {
@@ -12,6 +12,8 @@ namespace StateRoot
         private readonly GameState _gameState;
         public ObservableList<BuildingEntityProxy> Buildings { get; } = new();
         public ObservableList<Resource> Resources { get; } = new();
+
+        public BuildingsSettings BuildSettings => _gameState.BuildingsSettings;
 
         public GameStateProxy(GameState gameState)
         {
