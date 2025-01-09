@@ -8,6 +8,7 @@ using R3;
 using BaCon;
 using States;
 using Game.Settings;
+using System.ComponentModel;
 
 namespace GameRoot
 {
@@ -54,27 +55,30 @@ namespace GameRoot
 #if UNITY_EDITOR
             var sceneName = SceneManager.GetActiveScene().name;
 
-            if (sceneName == Scenes.GASTLE)
+            if (sceneName == Utils.Scenes.GASTLE)
             {
                 var enterParams = new CastleEnterParams();
                 _coroutines.StartCoroutine(LoadAndStartCastle(enterParams));
                 return;
             }
 
-            if(sceneName == Scenes.Fight)
+            if(sceneName == Utils.Scenes.Fight)
             {
-                var enterParams = new FightEnterParams(1);
+                var gameState = _rootContainer.Resolve<IGameStateProvider>().GameState;
+                var resources = gameState.Resources;
+
+                var enterParams = new FightEnterParams(resources);
                 _coroutines.StartCoroutine(LoadAndStartFight(enterParams));
                 return;
             }
 
-            if (sceneName == Scenes.MENU)
+            if (sceneName == Utils.Scenes.MENU)
             {
                 _coroutines.StartCoroutine(LoadAndStartMainMenu());
                 return;
             }
 
-            if (sceneName != Scenes.BOOTSTRAP)
+            if (sceneName != Utils.Scenes.BOOTSTRAP)
             {
                 return;
             }
@@ -88,8 +92,8 @@ namespace GameRoot
             _uiRoot.ShowLoadingScreen();
             _cachedSceneContainer?.Dispose();
 
-            yield return LoadScene(Scenes.BOOTSTRAP);
-            yield return LoadScene(Scenes.GASTLE);
+            yield return LoadScene(Utils.Scenes.BOOTSTRAP);
+            yield return LoadScene(Utils.Scenes.GASTLE);
 
             yield return new WaitForSeconds(1f);
 
@@ -121,8 +125,8 @@ namespace GameRoot
             _uiRoot.ShowLoadingScreen();
             _cachedSceneContainer?.Dispose();
 
-            yield return LoadScene(Scenes.BOOTSTRAP);
-            yield return LoadScene(Scenes.Fight);
+            yield return LoadScene(Utils.Scenes.BOOTSTRAP);
+            yield return LoadScene(Utils.Scenes.Fight);
 
             yield return new WaitForSeconds(1f);
 
@@ -147,8 +151,8 @@ namespace GameRoot
             _uiRoot.ShowLoadingScreen();
             _cachedSceneContainer?.Dispose();
 
-            yield return LoadScene(Scenes.BOOTSTRAP);
-            yield return LoadScene(Scenes.MENU);
+            yield return LoadScene(Utils.Scenes.BOOTSTRAP);
+            yield return LoadScene(Utils.Scenes.MENU);
 
             yield return new WaitForSeconds(1f);
 
@@ -158,7 +162,7 @@ namespace GameRoot
             {
                 var targetSceneName = mainMenuExitParams.TargetSceneEnterParams.SceneName;
 
-                if (targetSceneName == Scenes.GASTLE)
+                if (targetSceneName == Utils.Scenes.GASTLE)
                 {
                     _coroutines.StartCoroutine(LoadAndStartCastle(mainMenuExitParams.TargetSceneEnterParams.As<CastleEnterParams>()));
                 }

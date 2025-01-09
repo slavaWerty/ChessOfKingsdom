@@ -2,7 +2,6 @@
 using R3;
 using StateRoot;
 using States.GameResources;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,8 +59,12 @@ namespace States
                 Buildings = new List<BuildingsEntity>(),
                 Resource = new List<ResourceData>()
                 {
-                    new() {Amount = 0, ResourceType = ResourceType.SoftCurrency},
-                    new() {Amount = 0, ResourceType = ResourceType.HardCurrency},
+                    new() {Amount = 0, ResourceType = ResourceType.SoftCurrency},                
+                    new() {Amount = 0, ResourceType = ResourceType.Queen},                
+                    new() {Amount = 0, ResourceType = ResourceType.Rook},                
+                    new() {Amount = 0, ResourceType = ResourceType.Knight},                
+                    new() {Amount = 0, ResourceType = ResourceType.Pawn},                
+                    new() {Amount = 0, ResourceType = ResourceType.Bishop},                
                 }
             };
 

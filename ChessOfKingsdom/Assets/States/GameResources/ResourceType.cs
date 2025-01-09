@@ -2,7 +2,11 @@
 {
     public enum ResourceType
     {
-        HardCurrency,
-        SoftCurrency
+        SoftCurrency,
+        Queen,
+        Rook,
+        Bishop,
+        Knight,
+        Pawn
     }
 }

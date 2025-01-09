@@ -297,7 +297,7 @@ Camera:
   far clip plane: 996.39
   field of view: 60
   orthographic: 1
-  orthographic size: 12.254436
+  orthographic size: 4.7539783
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -322,7 +322,7 @@ Transform:
   m_GameObject: {fileID: 244828942}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 3.18, y: 5.05, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -338,6 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 518143250}
   - component: {fileID: 518143249}
+  - component: {fileID: 518143251}
   m_Layer: 0
   m_Name: ChessBg
   m_TagString: Untagged
@@ -405,13 +406,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518143248}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9589, y: -0.64, z: 0}
-  m_LocalScale: {x: 2.8680596, y: 2.6, z: 1}
+  m_LocalRotation: {x: -0, y: 0.008726558, z: -0, w: 0.999962}
+  m_LocalPosition: {x: 5.36, y: 4.82, z: -0.09}
+  m_LocalScale: {x: 0.90000004, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1, z: 0}
+--- !u!114 &518143251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518143248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48ba435958e61944bcd3111c3b2dac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 244828945}
+  GridSize: {x: 10, y: 10}
 --- !u!1 &647618070
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +473,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneUIRootPrefap: {fileID: 2107569974524172829, guid: 96244932a06e79540a484a646749f591, type: 3}
   _worldBinder: {fileID: 1359502989}
-  _testObject: {fileID: 0}
 --- !u!1 &1359502987
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a9ebabba512a3419cc1ff42a90a813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefapBuildings: {fileID: -4764145387672726039, guid: 1a94ac889b36b3046b345337f526a1f9, type: 3}
+  _prefapBuildings: {fileID: 6917238760433054268, guid: 56f819c5b80879b4cb280d238cab3e05, type: 3}
+  _buildingsGrid: {fileID: 518143251}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
