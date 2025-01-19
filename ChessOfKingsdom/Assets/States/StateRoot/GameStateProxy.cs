@@ -4,6 +4,7 @@ using R3;
 using System.Linq;
 using States.GameResources;
 using GamePlay.Settings;
+using States.Military;
 
 namespace StateRoot
 {
@@ -11,6 +12,7 @@ namespace StateRoot
     {
         private readonly GameState _gameState;
         public ObservableList<BuildingEntityProxy> Buildings { get; } = new();
+        public ObservableList<Military> Militaries { get; } = new();
         public ObservableList<Resource> Resources { get; } = new();
 
         public BuildingsSettings BuildSettings => _gameState.BuildingsSettings;
@@ -21,11 +23,31 @@ namespace StateRoot
 
             InitBuildings(_gameState);
             InitResources(_gameState);
+            InitMilitary(_gameState);
         }
 
         public int GreateEntityId()
         {
             return _gameState.CreateEntityId();
+        }
+
+        private void InitMilitary(GameState gameState)
+        {
+            gameState.Militaries.ForEach(b => Militaries.Add(new Military(b)));
+
+            Militaries.ObserveAdd().Subscribe(e =>
+            {
+                var addedMilitaryentity = e.Value;
+
+                gameState.Militaries.Add(addedMilitaryentity.Origin);
+            });
+
+            Militaries.ObserveRemove().Subscribe(e =>
+            {
+                var removeMilitaryentityProxy = e.Value;
+                var removesBuildingEntity = gameState.Militaries.FirstOrDefault(b => b.Id == removeMilitaryentityProxy.Id);
+                gameState.Militaries.Remove(removesBuildingEntity);
+            });
         }
 
         private void InitBuildings(GameState gameState)

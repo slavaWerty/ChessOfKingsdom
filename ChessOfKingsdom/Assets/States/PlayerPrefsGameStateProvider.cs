@@ -2,6 +2,7 @@
 using R3;
 using StateRoot;
 using States.GameResources;
+using States.Military;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -65,6 +66,15 @@ namespace States
                     new() {Amount = 0, ResourceType = ResourceType.Knight},                
                     new() {Amount = 0, ResourceType = ResourceType.Pawn},                
                     new() {Amount = 0, ResourceType = ResourceType.Bishop},                
+                },
+                Militaries = new List<MilitaryData>()
+                {
+                    new() { 
+                        SquadEntityes = new List<SquadEntity>()
+                        {
+                            new() {Amount = 0, Type = SquadType.Queen},
+                        }
+                    },
                 }
             };
 
