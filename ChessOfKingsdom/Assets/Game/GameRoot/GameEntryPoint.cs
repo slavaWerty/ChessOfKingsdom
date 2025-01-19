@@ -8,7 +8,6 @@ using R3;
 using BaCon;
 using States;
 using Game.Settings;
-using System.ComponentModel;
 
 namespace GameRoot
 {
@@ -140,7 +139,7 @@ namespace GameRoot
 
             sceneEntryPoint.Run(gamePlayContainer, enterParams).Subscribe(gameplayEnterParams =>
             {
-                _coroutines.StartCoroutine(LoadAndStartCastle(gameplayEnterParams.MainMenuEnterParams));
+                _coroutines.StartCoroutine(LoadAndStartCastle(gameplayEnterParams.CastleEnterParams));
             });
 
             _uiRoot.HideLoadingScreen();

@@ -13,6 +13,7 @@ namespace StateRoot
         public List<BuildingsEntity> Buildings;
         public BuildingsSettings BuildingsSettings;
         public List<ResourceData> Resource;
+        public List<MilitaryData> Militaries;
 
         public int CreateEntityId()
         {

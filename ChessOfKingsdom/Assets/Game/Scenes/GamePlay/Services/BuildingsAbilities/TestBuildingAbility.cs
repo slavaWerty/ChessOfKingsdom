@@ -6,7 +6,7 @@ namespace GamePlay.Services.BuildingsAbilities
     {
         public void Execute()
         {
-            Debug.Log("Test");
+           // Debug.Log("Test");
         }
     }
 }

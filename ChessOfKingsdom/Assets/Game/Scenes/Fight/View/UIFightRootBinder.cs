@@ -1,17 +1,5 @@
-using R3;
-using UnityEngine;
+using mBuilding.Scripts.MVVM.UI;
 
-public class UIFightRootBinder : MonoBehaviour
+public class UIFightRootBinder : UIRootBinder
 {
-    private Subject<Unit> _exitSceneSignalSubj;
-
-    public void HandleGoToGameplayButtonClick()
-    {
-        _exitSceneSignalSubj?.OnNext(Unit.Default);
-    }
-
-    public void Bind(Subject<Unit> exitSceneSignalSubj)
-    {
-        _exitSceneSignalSubj = exitSceneSignalSubj;
-    }
 }
